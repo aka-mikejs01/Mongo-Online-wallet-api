@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import connectDB from "./config/db.js";
 import logger from "./middleware/logger.js";
+import authRoutes from "./routes/authRoutes.js";
 
 dotenv.config();
 
@@ -14,6 +15,8 @@ app.use(cookieParser());
 app.use(
   morgan("combined", { stream: { write: (msg) => logger.http(msg.trim()) } })
 );
+
+app.use("/api/auth", authRoutes);
 
 const PORT = process.env.PORT || 8000;
 
