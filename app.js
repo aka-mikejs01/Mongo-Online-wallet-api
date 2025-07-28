@@ -5,6 +5,7 @@ import morgan from "morgan";
 import connectDB from "./config/db.js";
 import logger from "./middleware/logger.js";
 import authRoutes from "./routes/authRoutes.js";
+import walletRoutes from "./routes/walletRoutes.js";
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use(
 );
 
 app.use("/api/auth", authRoutes);
+app.use("/api/wallet", walletRoutes);
 
 const PORT = process.env.PORT || 8000;
 

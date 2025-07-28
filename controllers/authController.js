@@ -30,7 +30,11 @@ export const registerUser = async (req, res) => {
     });
     res
       .status(201)
-      .json({ message: "User registered successfully", accessToken });
+      .json({
+        message: "User registered successfully",
+        id: user._id,
+        accessToken,
+      });
   } catch (err) {
     res.status(500).json({ message: "Error Occured", error: err.message });
   }
@@ -58,7 +62,11 @@ export const loginUser = async (req, res) => {
       sameSite: "Strict",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
-    res.json({ message: "User logged in successfully", accessToken });
+    res.json({
+      message: "User logged in successfully",
+      id: user._id,
+      accessToken,
+    });
   } catch (err) {
     res.status(500).json({ message: "Error Occured", error: err.message });
   }
